@@ -12,20 +12,20 @@ import { MatTableDataSource } from "@angular/material";
 export class AppComponent implements OnInit {
   title:string = 'calc';
   total:number = 0;
-  calculation:string ='';
+  calculation:number = 0;
   message:string;
   magnitud:number = 10;
   stack:(number)[] = [];
-  clear(){this.calculation='0'; this.total=0; this.message ="cleared";this.stack =[];};
-  add_number(value:string):void{
+  clear(){this.calculation=0; this.total=0; this.message ="cleared";this.stack =[];};
+  add_number(value:number):void{
     
-    this.calculation = (parseInt(value) + ( parseInt(this.calculation) * this.magnitud)).toString();
+    this.calculation = (value) + ( this.calculation * this.magnitud);
     
     this.message =  this.magnitud.toString();
   };
-  add(){this.stack.push(parseInt(this.calculation));console.log(this.stack); this.calculation = '0'; this.message = this.stack.toString();};
+  add(){this.stack.push((this.calculation));console.log(this.stack); this.calculation = 0; this.message = this.stack.toString();};
   solve():void{
-    this.stack.push(parseInt(this.calculation));
+    this.stack.push((this.calculation));
     let result:number = 0;
     const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
     
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   
   ngOnInit() {
-    this.calculation='0';
+    this.calculation=0;
   
 }}
 
