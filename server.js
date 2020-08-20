@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/hardware-store'));
+app.use(express.static(__dirname + '/dist/hardwarestore'));
 app.get('/*', function(req,res) {
-    res.sendFile(path.join(__dirname + '/dist/hardware-store/index.html'));});
+    res.sendFile(path.join(__dirname + '/dist/hardwarestore/index.html'));});
     app.listen(process.env.PORT || 8080);
